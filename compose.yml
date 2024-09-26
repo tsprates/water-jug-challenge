@@ -1,0 +1,25 @@
+services:
+  api:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    networks:
+      - water-jug-net
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+  ui:
+    container_name: ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - water-jug-net
+
+networks:
+  water-jug-net:
